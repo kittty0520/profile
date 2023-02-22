@@ -72,3 +72,62 @@ function scrollIntoView(selector) {
 	scrollTo.scrollIntoView({ behavior: 'smooth' });
 	// selectNavItem(navItem[sectionIds.indexOf(selector)]);
 }
+
+//Handle Scrolling on the webstandard contents
+//make contents to move horizontally
+const sliderWrap = document.querySelector('.slider__container');
+const sliderInner = document.querySelector('.slider__inner'); //움직이는 영역
+const sliderWeb = document.querySelector('.slider'); //각각 이미지
+
+let sliderInnerWidth = sliderInner.offsetWidth;
+let sliderWidth = sliderWeb.offsetWidth;
+let offset = 0;
+
+// sliderInner.addEventListener('wheel', (e) => {
+// 	// console.log(e.target);
+// 	offset += Math.sign(e.deltaY) * 200;
+// 	if (offset < 0) {
+// 		offset = 0;
+// 	} else if (offset > 2 * sliderWidth) {
+// 		offset = 2 * sliderWidth;
+// 		//다시 계산식 세우기
+// 		//마지막 div의 오른쪽 끝이 화면 끝에 붙은 채로 끝나야 됨
+// 	}
+// 	sliderEffect(offset);
+// });
+
+// function sliderEffect(offset) {
+// 	sliderInner.style.transition = 'all 1s';
+// 	sliderInner.style.transform = `translate3D(-${offset}px,0,0)`;
+// }
+
+//study
+const studyBtnContainer = document.querySelector('.study__categories');
+const studyContainer = document.querySelector('.study__notes');
+const studies = document.querySelectorAll('.study');
+
+studyBtnContainer.addEventListener('click', (e) => {
+	const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter; //parentNode는 버튼 위의 span영역을 누를떄를 대비함
+	if (filter == null) {
+		return;
+	}
+	//Remove selection from previous and select the new one
+	const active = document.querySelector('.category__btn.active');
+	active.classList.remove('active');
+	const target =
+		e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+	target.classList.add('active');
+
+	studyContainer.classList.add('ani-out');
+
+	setTimeout(() => {
+		studies.forEach((element) => {
+			if (filter === '*' || filter === element.dataset.type) {
+				element.classList.remove('invisible');
+			} else {
+				element.classList.add('invisible');
+			}
+		});
+		studyContainer.classList.remove('ani-out');
+	}, 300);
+});

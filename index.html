@@ -17,10 +17,10 @@
 		<script type="text/javascript" src="assets/js/main.js" defer></script>
 
 		<!-- GSAP -->
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
-		/>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"
+			defer
+		></script>
 
 		<!-- fontsawesome -->
 		<script
@@ -91,7 +91,12 @@
 			<!-- //about -->
 			<section id="textEffect" class="section">
 				<div class="container">
-					<p>도전적이며 창의적이고 발전하는 인재가 되도록하겠습니다.</p>
+					<div class="textEffect__container">
+						<span>도전적이며</span>
+						<span>창의적이고</span>
+						<span>발전하는</span>
+						<span>인재가 되도록하겠습니다.</span>
+					</div>
 				</div>
 			</section>
 			<!-- //textEffect -->
@@ -126,7 +131,6 @@
 									/>
 									<div class="skill__title">React</div>
 								</div>
-								<div class="skill"></div>
 								<div class="skill">
 									<img
 										class="skill__image"
@@ -159,7 +163,6 @@
 									/>
 									<div class="skill__title">Figma</div>
 								</div>
-								<div class="skill"></div>
 							</div>
 							<div class="skill__wrap">
 								<div class="skill"></div>
@@ -187,7 +190,6 @@
 									/>
 									<div class="skill__title">React</div>
 								</div>
-								<div class="skill"></div>
 								<div class="skill">
 									<img
 										class="skill__image"
@@ -220,7 +222,6 @@
 									/>
 									<div class="skill__title">Figma</div>
 								</div>
-								<div class="skill"></div>
 							</div>
 						</div>
 						<div class="skillset__move container2">
@@ -233,8 +234,6 @@
 								<div class="skill">6</div>
 								<div class="skill">7</div>
 								<div class="skill">8</div>
-								<div class="skill">9</div>
-								<div class="skill">10</div>
 							</div>
 							<div class="skill__wrap">
 								<div class="skill">1</div>
@@ -245,8 +244,6 @@
 								<div class="skill">6</div>
 								<div class="skill">7</div>
 								<div class="skill">8</div>
-								<div class="skill">9</div>
-								<div class="skill">10</div>
 							</div>
 						</div>
 					</div>
@@ -254,54 +251,78 @@
 			</section>
 			<!-- //skills -->
 			<section id="works" class="section">
-				<div class="work__container">
+				<div class="works__container">
 					<h2 class="title">My Work</h2>
-					<h3>Projects</h3>
-					<article class="work__projects">
-						<!--article태그를 사용?-->
-						<div class="project__webstandard">
+					<div class="work__projects">
+						<!-- 웹표준사이트 -->
+						<div class="project">
 							<img
-								class="webstandard__img"
+								class="project__img"
 								src="assets/image/portfolio_sample.png"
 								alt="웹표준사이트"
 							/>
-							<p class="webstandard__description">
-								다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여 사이트를
-								제작하였으며 ...에서 인증받았습니다.
-							</p>
-							<div class="webstandard__hashtag">
-								<span>HTML</span>
-								<span>CSS</span>
-								<span>jQuary</span>
+							<div class="project__content">
+								<h4 class="project__title">웹표준사이트</h4>
+								<p class="project__description">
+									다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여
+									사이트를 제작하였으며 ...에서 인증받았습니다.
+								</p>
+								<div class="project__hashtag">
+									<span>#HTML</span>
+									<span>#CSS</span>
+									<span>#jQuary</span>
+								</div>
+								<button class="project__button">바로가기</button>
 							</div>
-							<button class="project__button">바로가기</button>
 						</div>
-					</article>
-					<article class="work__projects">
-						<div>
-							<img src="assets/image/portfolio_sample.png" alt="반응형사이트" />
-							<p>
-								다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여 사이트를
-								제작하였으며 ...에서 인증받았습니다.
-							</p>
-							<button class="project__button">바로가기</button>
+						<!-- 미니게임 -->
+						<div class="project">
+							<div class="project__content">
+								<h4 class="project__title">미니게임</h4>
+								<p class="project__description">
+									자바스크립트의 ...의 기본원리와 ...을 사용하여 미니게임을
+									제작하였습니다.
+								</p>
+								<div class="project__hashtag">
+									<span>#HTML</span>
+									<span>#CSS</span>
+									<span>#Javascript</span>
+								</div>
+								<button class="project__button">바로가기</button>
+							</div>
+							<img
+								class="project__img"
+								src="assets/image/portfolio_sample.png"
+								alt="웹표준사이트"
+							/>
 						</div>
-					</article>
-					<article class="work__projects">
-						<div>
-							<img src="assets/image/portfolio_sample.png" alt="리액트사이트" />
-							<p>
-								다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여 사이트를
-								제작하였으며 ...에서 인증받았습니다.
-							</p>
-							<button class="project__button">바로가기</button>
+						<!-- 쇼핑몰 -->
+						<div class="project">
+							<img
+								class="project__img"
+								src="assets/image/portfolio_sample.png"
+								alt="웹표준사이트"
+							/>
+							<div class="project__content">
+								<h4 class="project__title">쇼핑몰</h4>
+								<p class="project__description">
+									다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여
+									사이트를 제작하였으며 ...에서 인증받았습니다.
+								</p>
+								<div class="project__hashtag">
+									<span>#Firebase</span>
+									<span>#TailwindCSS</span>
+									<span>#REACT</span>
+								</div>
+								<button class="project__button">바로가기</button>
+							</div>
 						</div>
-					</article>
+					</div>
 				</div>
 			</section>
 			<!-- //works -->
 			<section id="study" class="section">
-				<div class="container">
+				<div class="study__container">
 					<h2 class="title">Studing</h2>
 					<div class="study__categories">
 						<button class="category__btn active" data-filter="*">
@@ -318,7 +339,7 @@
 						</button>
 					</div>
 					<div class="study__notes">
-						<a href="#" class="note" target="_blank" data-type="webstandard">
+						<a href="#" class="study" target="_blank" data-type="webstandard">
 							<img
 								class="study__img"
 								src="assets/image/portfolio_sample.png"
@@ -414,7 +435,7 @@
 		<footer id="contact">
 			<div class="container">
 				<h2 class="contact__title">Contact Me</h2>
-				<p class="contact__eamil">dheud1004@gmail.com</p>
+				<p class="contact__email">dheud1004@gmail.com</p>
 				<div class="contact__link">
 					<a href="https://github.com/kittty0520"
 						><i class="fa-brands fa-github"></i
