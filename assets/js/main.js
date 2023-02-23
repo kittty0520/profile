@@ -15,9 +15,11 @@ document.addEventListener('scroll', () => {
 // navbar toggle button for small screen
 const navbarMenu = document.querySelector('.navbar__menu');
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+const headerContainer = document.querySelector('.header__container');
 navbarToggleBtn.addEventListener('click', () => {
 	navbarToggleBtn.classList.toggle('active');
 	navbarMenu.classList.toggle('open');
+	headerContainer.classList.toggle('toggle');
 });
 
 //Handle Scrolling when tapping on the navbar menu
@@ -40,48 +42,15 @@ contactButton.addEventListener('click', () => {
 	scrollIntoView('#contact');
 });
 
-//1. 모든 섹션 요소들을 가지고 온다.
-//2. IntersectionOserver를 이용해서 모든 섹션들을 관찰한다.
-//3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 한다.
-
-const sectionIds = [
-	'#home',
-	'#about',
-	'#skills',
-	'#works',
-	'#study',
-	'#contact',
-];
-
-const sections = sectionIds.map((id) => document.querySelector(id));
-const navItem = sectionIds.map((id) =>
-	document.querySelector(`[data-link="${id}"]`)
-);
-
-let selectedNavIndex = 0;
-let selectedNavItem = navItem[0];
-
-function selectNavItem(selected) {
-	selectedNavItem.classList.remove('active');
-	selectedNavItem = selected;
-	selectedNavItem.classList.add('active');
-}
-
-function scrollIntoView(selector) {
-	const scrollTo = document.querySelector(selector);
-	scrollTo.scrollIntoView({ behavior: 'smooth' });
-	// selectNavItem(navItem[sectionIds.indexOf(selector)]);
-}
-
 //Handle Scrolling on the webstandard contents
 //make contents to move horizontally
-const sliderWrap = document.querySelector('.slider__container');
-const sliderInner = document.querySelector('.slider__inner'); //움직이는 영역
-const sliderWeb = document.querySelector('.slider'); //각각 이미지
+// const sliderWrap = document.querySelector('.slider__container');
+// const sliderInner = document.querySelector('.slider__inner'); 움직이는 영역
+// const sliderWeb = document.querySelector('.slider'); 각각 이미지
 
-let sliderInnerWidth = sliderInner.offsetWidth;
-let sliderWidth = sliderWeb.offsetWidth;
-let offset = 0;
+// let sliderInnerWidth = sliderInner.offsetWidth;
+// let sliderWidth = sliderWeb.offsetWidth;
+// let offset = 0;
 
 // sliderInner.addEventListener('wheel', (e) => {
 // 	// console.log(e.target);
@@ -130,4 +99,115 @@ studyBtnContainer.addEventListener('click', (e) => {
 		});
 		studyContainer.classList.remove('ani-out');
 	}, 300);
+});
+
+//making each section transparent when scrolling
+//Make sections slowly fade to transparent as the window scrolls down
+
+const home = document.querySelector('#home');
+const homeHeight = home.getBoundingClientRect().height;
+
+document.addEventListener('scroll', () => {
+	if (window.scrollY < homeHeight) {
+		home.style.opacity = 1 - window.scrollY / homeHeight;
+	}
+});
+
+//Show 'arrow up' button when scrolling up
+const arrowUp = document.querySelector('.arrow-up');
+
+document.addEventListener('scroll', () => {
+	if (window.scrollY > homeHeight / 2) {
+		arrowUp.classList.add('visible');
+	} else {
+		arrowUp.classList.remove('visible');
+	}
+});
+
+//Handle click on the 'arrow up' button
+arrowUp.addEventListener('click', () => {
+	scrollIntoView('#home');
+});
+
+//1. 모든 섹션 요소들을 가지고 온다.
+//2. IntersectionOserver를 이용해서 모든 섹션들을 관찰한다.
+//3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 한다.
+
+const sectionIds = [
+	'#home',
+	'#about',
+	'#skills',
+	'#works',
+	'#study',
+	'#contact',
+];
+
+const sections = sectionIds.map((id) => document.querySelector(id));
+const navItem = sectionIds.map((id) =>
+	document.querySelector(`[data-link="${id}"]`)
+);
+
+let selectedNavIndex = 0;
+let selectedNavItem = navItem[0];
+
+function selectNavItem(selected) {
+	selectedNavItem.classList.remove('active');
+	selectedNavItem = selected;
+	selectedNavItem.classList.add('active');
+}
+
+function scrollIntoView(selector) {
+	const scrollTo = document.querySelector(selector);
+	scrollTo.scrollIntoView({ behavior: 'smooth' });
+	// selectNavItem(navItem[sectionIds.indexOf(selector)]);
+}
+
+//화면 밖으로 나가는 요소에 초점을 맞춤
+const observerCallback = (entries, observer) => {
+	entries.forEach((entry) => {
+		if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+			const index = sectionIds.indexOf(`#${entry.target.id}`);
+			if (entry.boundingClientRect.y < 0) {
+				selectedNavIndex = index + 1;
+			} else {
+				selectedNavIndex = index - 1;
+			}
+		}
+		console.log(entry.intersectionRatio);
+		if (entry.isIntersecting && entry.intersectionRatio > 0) {
+			entry.target.classList.add('show');
+		} else if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+			entry.target.classList.remove('show');
+		}
+	});
+};
+
+const observerOptions = {
+	root: null, //브라우저의 viewport가 기본값
+	rootMargin: '0px',
+	threshold: 0.3, //target의 가시성이 30%일 때 observer가 실행됨
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+sections.forEach((section) => observer.observe(section));
+
+//Resolve the problem that when in first section and last section, selectNavItem is wrong
+window.addEventListener('wheel', () => {
+	if (window.scrollY === 0) {
+		selectedNavIndex = 0;
+	} else if (
+		Math.round(window.scrollY + window.innerHeight) >=
+		document.body.clientHeight
+	) {
+		selectedNavIndex = navItem.length - 1;
+		console.log('max');
+	}
+	selectNavItem(navItem[selectedNavIndex]);
+});
+
+//Show the value of window.innerWidth
+const innerHeight = document.querySelector('.innerWidth');
+window.addEventListener('resize', () => {
+	innerHeight.innerHTML = `<p>${window.innerWidth}<p>`;
 });
