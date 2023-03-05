@@ -215,6 +215,63 @@ article {
 .home__image__source a {
 	color: var(--color-light-purple);
 }
+.home__scroll__container {
+	position: absolute;
+	bottom: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	color: var(--color-white);
+}
+.home__scrollDown__text {
+	position: relative;
+	margin-top: 24px;
+}
+.home__scrollDown__text::before {
+	content: '';
+	width: 1px;
+	height: 24px;
+	position: absolute;
+	top: -24px;
+	left: 50%;
+	background-color: var(--color-light-white);
+}
+.home__scrollDown {
+	position: relative;
+	bottom: 0px;
+	width: 30px;
+	height: 50px;
+	border: 1px solid var(--color-white);
+	border-radius: 60px;
+}
+.home__scrollDown::before {
+	content: '';
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: var(--color-white);
+	border-radius: 50%;
+	opacity: 1;
+	animation: wheel 2s infinite;
+	-webkit-animation: wheel 2s infinite;
+}
+
+@keyframes wheel {
+	to {
+		opacity: 0;
+		top: 35px;
+	}
+}
+
+@-webkit-keyframes wheel {
+	to {
+		opacity: 0;
+		top: 35px;
+	}
+}
 
 /* About Me */
 .about__content {

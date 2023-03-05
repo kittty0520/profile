@@ -173,7 +173,7 @@ const observerCallback = (entries, observer) => {
 				selectedNavIndex = index - 1;
 			}
 		}
-		console.log(entry.intersectionRatio);
+		// console.log(entry.intersectionRatio);
 		if (entry.isIntersecting && entry.intersectionRatio > 0) {
 			entry.target.classList.add('show');
 		} else if (!entry.isIntersecting && entry.intersectionRatio > 0) {
