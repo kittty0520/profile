@@ -91,15 +91,30 @@
 					<h2 class="title">About Me</h2>
 					<div class="about__content">
 						<p class="about__description">
-							웹퍼블리셔로 6개월동안 공부하였습니다. 웹표준을 준수하여 HTML,
-							CSS를 구현할 수 있으며, 제가 사용할 수 있는 언어는 자바스크립트와
-							타입스크립트, 리액트입니다.
+							저만의 기술을 가지고 싶어 찾아보던 중 UI/UX 에 대해 알게 되었고,
+							그와 관련된 직무를 찾다보니 웹퍼블리셔 라는 직업을 가지고 싶다는
+							마음이 생겼습니다.
+							<br />
+							그 후 6개월 동안 독학으로 HTML5, CSS, JavaScript, React,
+							TypeScript에 대해 공부하였고, 인터넷강의를 통해서 경험한
+							프로젝트를 토대로 몇가지 개인프로젝트를 제작하였습니다. <br />
+							고쳐야 할 부분도, 채워나가야 할 부분도 아직 많지만 그만큼 노력하고
+							꾸준히 공부해나가는 개발자가 되도록 하겠습니다.
 						</p>
-						<img
+						<!-- <img
 							class="about__image"
 							src="assets/image/profile.jpg"
 							alt="프로필 사진"
-						/>
+						/> -->
+
+						<div class="about__cube">
+							<div class="face cube__face__front"></div>
+							<div class="face cube__face__back"></div>
+							<div class="face cube__face__left"></div>
+							<div class="face cube__face__right"></div>
+							<div class="face cube__face__top"></div>
+							<div class="face cube__face__bottom"></div>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -269,34 +284,15 @@
 				<div class="works__container">
 					<h2 class="title">My Work</h2>
 					<div class="work__projects">
-						<!-- 웹표준사이트 -->
-						<div class="project">
-							<img
-								class="project__img"
-								src="assets/image/portfolio_sample.png"
-								alt="웹표준사이트"
-							/>
-							<div class="project__content">
-								<h4 class="project__title">웹표준사이트</h4>
-								<p class="project__description">
-									다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여
-									사이트를 제작하였으며 ...에서 인증받았습니다.
-								</p>
-								<div class="project__hashtag">
-									<span>#HTML</span>
-									<span>#CSS</span>
-									<span>#jQuary</span>
-								</div>
-								<button class="project__button">바로가기</button>
-							</div>
-						</div>
 						<!-- 미니게임 -->
 						<div class="project">
-							<img
-								class="project__img"
-								src="assets/image/portfolio_sample.png"
-								alt="웹표준사이트"
-							/>
+							<div class="project__img__container">
+								<img
+									class="project__img"
+									src="assets/image/miniGame.png"
+									alt="미니게임"
+								/>
+							</div>
 							<div class="project__content">
 								<h4 class="project__title">미니게임</h4>
 								<p class="project__description">
@@ -308,16 +304,44 @@
 									<span>#CSS</span>
 									<span>#Javascript</span>
 								</div>
-								<button class="project__button">바로가기</button>
+								<a href="#" class="project__button">바로가기</a>
 							</div>
 						</div>
+						<!-- //미니게임 -->
+						<!-- 프로필사이트-->
+						<div class="project">
+							<div class="project__img__container">
+								<img
+									class="project__img"
+									src="assets/image/profile.png"
+									alt="프로필사이트"
+								/>
+							</div>
+							<div class="project__content">
+								<h4 class="project__title">프로필사이트</h4>
+								<p class="project__description">
+									다양한 사용자의 접근성을 높이기 위해 웹표준을 준수하여
+									사이트를 제작하였으며 ...에서 인증받았습니다.
+								</p>
+								<div class="project__hashtag">
+									<span>#HTML</span>
+									<span>#CSS</span>
+									<span>#Javascript</span>
+								</div>
+								<a href="#" class="project__button">바로가기</a>
+							</div>
+						</div>
+						<!-- //프로필사이트 -->
+
 						<!-- 쇼핑몰 -->
 						<div class="project">
-							<img
-								class="project__img"
-								src="assets/image/portfolio_sample.png"
-								alt="웹표준사이트"
-							/>
+							<div class="project__img__container">
+								<img
+									class="project__img"
+									src="assets/image/shopping.png"
+									alt="쇼핑몰사이트"
+								/>
+							</div>
 							<div class="project__content">
 								<h4 class="project__title">쇼핑몰</h4>
 								<p class="project__description">
@@ -329,9 +353,15 @@
 									<span>#TailwindCSS</span>
 									<span>#REACT</span>
 								</div>
-								<button class="project__button">바로가기</button>
+								<a
+									href="https://projectshopforyou.netlify.app/"
+									target="_blank"
+									class="project__button"
+									>바로가기</a
+								>
 							</div>
 						</div>
+						<!-- //쇼핑몰 -->
 					</div>
 				</div>
 			</section>
