@@ -530,6 +530,9 @@ article {
 	border: 1px solid var(--color-dark-grey);
 	padding: 8px 16px;
 }
+.project__button:hover {
+	color: var(--color-black);
+}
 
 /* Study */
 .study__container {
@@ -697,7 +700,7 @@ article {
 	pointer-events: auto;
 }
 
-/* For below 768px screen width */
+/* For below 1080px screen width */
 @media screen and (max-width: 1080px) {
 	/* skill */
 	.skill {
@@ -710,7 +713,7 @@ article {
 		height: 20vw;
 	}
 }
-
+/* For below 768px screen width */
 @media screen and (max-width: 768px) {
 	:root {
 		/* Font Size */
@@ -815,7 +818,7 @@ article {
 	/* works */
 	.project__content {
 		width: 240px;
-		margin: 0 24px;
+		margin: 24px;
 	}
 
 	/* study */
@@ -834,15 +837,21 @@ article {
 	}
 }
 @media screen and (max-width: 480px) {
+	/* About Me */
 	.about__content {
 		flex-direction: column;
 	}
-
+	.about__cube {
+		margin-top: 48px;
+		left: 0;
+	}
+	/* Skill */
 	.skill {
 		width: 32vw;
 		height: 32vw;
 		margin-bottom: 12vw;
 	}
+	/* Works */
 	.project,
 	.project:nth-child(2) {
 		flex-direction: column;
@@ -851,6 +860,7 @@ article {
 		width: 240px;
 		/* margin-bottom: 20px; */
 	}
+	/* Study */
 	.study__categories {
 		padding: 0 18px;
 	}
