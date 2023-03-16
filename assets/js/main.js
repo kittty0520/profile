@@ -185,7 +185,7 @@ const observerCallback = (entries, observer) => {
 const observerOptions = {
 	root: null, //브라우저의 viewport가 기본값
 	rootMargin: '0px',
-	threshold: 0.3, //target의 가시성이 30%일 때 observer가 실행됨
+	threshold: 0.2, //target의 가시성이 20%일 때 observer가 실행됨
 };
 
 const observer = new IntersectionObserver(observerCallback, observerOptions);
