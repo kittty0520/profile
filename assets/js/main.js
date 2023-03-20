@@ -19,7 +19,7 @@ const headerContainer = document.querySelector('.header__container');
 navbarToggleBtn.addEventListener('click', () => {
 	navbarToggleBtn.classList.toggle('active');
 	navbarMenu.classList.toggle('open');
-	headerContainer.classList.toggle('toggle');
+	headerContainer.classList.toggle('purple');
 });
 
 //Handle Scrolling when tapping on the navbar menu
