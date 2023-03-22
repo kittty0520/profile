@@ -27,7 +27,8 @@ tr,
 textarea,
 button,
 form,
-section {
+section,
+figure {
 	margin: 0;
 	padding: 0;
 }
